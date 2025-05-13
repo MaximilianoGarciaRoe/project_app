@@ -1,0 +1,22 @@
+<%= form_with(model: project) do |form| %>
+  <% if project.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', projects_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>
