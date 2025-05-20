@@ -12,3 +12,10 @@ projects.each do |name|
 end
 
 puts 'Sample projects created successfully!'
+
+
+Task.create(name: 'Tarea 1', status: 1, project_id: 1)
+Task.create(name: 'Tarea 2', status: 1, project_id: 1)
+Task.create(name: 'Tarea 3', status: 1, project_id: 1)
+Task.create(name: 'Tarea 4', status: 1, project_id: 1)
+Task.create(name: 'Tarea 5', status: 1, project_id: 1)
