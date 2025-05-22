@@ -1,28 +1,25 @@
 <div class="card">
   <div class="card-header">
-    <h1>New Task</h1>
+    <h1>New Task  <%= @project.name %></h1>
+    
   </div>
   <div class="card-body">
     <%= form_with(model: @task) do |form| %>
-        <div class="mb-3">
-            <%= form.label :name, class: "form-label" %>
-            <%= form.text_field :name, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-            <%= form.label :status, class: "form-label" %>
-            <%= form.number_field :status, class: "form-control" %>
-        </div>
+      <div class="mb-3">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :status, class: "form-label" %>
+        <%= form.number_field :status, class: "form-control" %>
+      </div>
 
+      <%= form.hidden_field :project_id, value: @project.id %>
 
-        <div class="mb-3">
-            <%= form.label :project_id, 'Project', class: "form-label" %>
-            <%= form.collection_select :project_id, Project.all, :id, :name, {}, class: "form-select" %>
-        </div>
-
-        <div class="actions">
-            <%= form.submit class: "btn btn-primary" %>
-            <%= link_to 'Back', projects_path, class: "btn btn-secondary" %>
-        </div>
+      <div class="actions">
+        <%= form.submit class: "btn btn-primary" %>
+        <%= link_to 'Back', projects_path, class: "btn btn-secondary" %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -5,6 +5,30 @@
   <div class="card-body">
     <h5 class="card-title"><%= @project.name %></h5>
   </div>
+
+  <div class="card-body">
+    <h5 class="card-title">Tasks</h5>
+    <%= link_to 'Create', new_project_task_path(@project), class:'btn btn-primary btn-sm'%>
+    <table class="table table-striped mb-0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.name %></td>
+            <td><%= task.status %></td>
+            <td class="text-end">
+              <%= link_to 'Destroy', task, class: 'btn btn-danger btn-sm' , data: { confirm: 'Are you sure?' , turbo_method: :delete }  %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <div class="card-footer">
     <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning' %>
     <%= link_to 'Back', projects_path, class: 'btn btn-secondary' %>
