@@ -1,49 +1,54 @@
 class TasksController < ApplicationController
+  before_action :set_project
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def index
-    @tasks = Task.all
+    @tasks = @project.tasks
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
-    @project = Project.find(params[:project_id])
-    @task = Task.new(project: @project)
+    @task = @project.tasks.build
   end
 
   def create
-    @task = Task.new(tasks_params)
+    @task = @project.tasks.build(tasks_params)
     if @task.save
-      redirect_to @task.project, notice: "Task was successfully created."
+      redirect_to project_path(@project), notice: "Task was successfully created."
     else
       render :new
     end
   end
 
   def edit
-    @task = Task.find_by(id: params[:id])
   end
 
   def update
-    @task = Task.find_by(id: params[:id])
     if @task.update(tasks_params)
-      redirect_to @task, notice: "Task was successfully updated."
+      redirect_to project_path(@project), notice: "Task was successfully updated."
     else
       render :edit
     end
   end
 
   def destroy
-    @task = Task.find_by(id: params[:id])
-    @project = @task.project
     @task.destroy
-    redirect_to @project, notice: "Task was successfully deleted."
+    redirect_to project_path(@project), notice: "Task was successfully deleted."
   end
 
   private
 
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def set_task
+    @task = @project.tasks.find(params[:id])
+  end
+
   def tasks_params
-    params.require(:task).permit(:name, :status, :project_id)
+    params.require(:task).permit(:name, :status)
   end
 end

@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :projects do
-    resources :tasks, only: [ :index, :new, :create ]
+    resources :tasks
   end
-
-  resources :tasks
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
