@@ -8,12 +8,12 @@ class Task < ApplicationRecord
 
   def status_badge
     case status
-    when 'pending'
-      'badge bg-warning'
-    when 'in_progress'
-      'badge bg-primary'
-    when 'completed'
-      'badge bg-success'
+    when "pending"
+      "badge bg-warning"
+    when "in_progress"
+      "badge bg-primary"
+    when "completed"
+      "badge bg-success"
     end
   end
 end
