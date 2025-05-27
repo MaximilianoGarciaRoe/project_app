@@ -1,8 +1,19 @@
-<div class="card">
-  <div class="card-header">
-    <h1>Edit Task for <%= @project.name %></h1>
-  </div>
-  <div class="card-body">
-    <%= render 'form' %>
+<div class="container-fluid p-4">
+  <div class="row g-4">
+    <div class="col-12 col-md-8 col-lg-6 mx-auto">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h4 class="mb-0">Edit Task</h4>
+              <p class="text-muted small mb-0">Modify task for <%= @project.name %></p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

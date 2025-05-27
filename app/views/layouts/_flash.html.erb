@@ -1,15 +1,9 @@
-<% if flash[:notice] %>
-  <div class="alert alert-info">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-<% if flash[:alert] %>
-  <div class="alert alert-danger">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
-<% if flash[:error] %>
-  <div class="alert alert-danger">
-    <%= flash[:error] %>
+<% flash.each do |name, msg| %>
+  <div class="<%= flash_class(name) %>" role="alert">
+    <div class="d-flex align-items-center gap-2">
+      <i class="<%= flash_icon_class(name) %>"></i>
+      <%= msg %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
